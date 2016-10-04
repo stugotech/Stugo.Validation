@@ -10,7 +10,7 @@ namespace Stugo.Validation.Validators
 {
     public class RequiredValidator : IValidator<object>
     {
-        public IEnumerable<ValidationError> GetErrors(object value, string prefix = null)
+        public ValidationError[] GetErrors(object value, string prefix = null)
         {
             if (value == null
                 || (value is string && string.IsNullOrEmpty((string)value))

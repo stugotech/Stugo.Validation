@@ -14,7 +14,7 @@ namespace Stugo.Validation.Validators
         }
 
 
-        public IEnumerable<ValidationError> GetErrors(string entity, string prefix = null)
+        public ValidationError[] GetErrors(string entity, string prefix = null)
         {
             if (entity != null && entity.Length > maxLength)
                 return new[] { new StringLengthValidationError(prefix, maxLength) };

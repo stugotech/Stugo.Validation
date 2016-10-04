@@ -4,6 +4,6 @@ namespace Stugo.Validation
 {
     public interface IValidator<T>
     {
-        IEnumerable<ValidationError> GetErrors(T entity, string prefix = null);
+        ValidationError[] GetErrors(T entity, string prefix = null);
     }
 }

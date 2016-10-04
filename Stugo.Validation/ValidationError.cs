@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.Text;
 
 namespace Stugo.Validation
 {
@@ -21,6 +22,7 @@ namespace Stugo.Validation
 
             return builder.ToString();
         }
+
 
         public static readonly ValidationError[] None = new ValidationError[0];
 
