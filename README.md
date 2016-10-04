@@ -52,7 +52,7 @@ for the extra properties (in this case `MaxLength`).
 All validators are based on `IValidator<T>` which has one method:
 
 ```csharp
-IEnumerable<ValidationError> GetErrors(T entity);
+ValidationError[] GetErrors(T entity);
 ```
 
 ## Bundled validators 
@@ -65,21 +65,28 @@ For convenience, a few validators are provided.
 | `StringLengthValidator` | `StringLengthValidationError` | `MaxLength` |
 
 
-## A note on generator functions
+## Compound validators 
 
-It might seem convenient to implement a validation function as follows:
+### PropertyValidator
+
+This validator will call a number of child validators with a value provided by a property accessor
+expression:
 
 ```csharp
-public IEnumerable<ValidationError> GetErrors(object value)
-{
-    if (value == null
-        || (value is string && string.IsNullOrEmpty((string)value))
-        || (value is IEnumerable && !((IEnumerable)value).GetEnumerator().MoveNext()))
-    {
-        yield return new RequiredValidationError();  // DON'T DO THIS!
-    }
-}
+var validator = new PropertyValidator<MyClass>(
+    x => x.MyProperty, 
+	new RequiredValidator(), 
+	new StringLengthValidator(10)
+);
 ```
 
-**DON'T.**  A callee might assume they have a list of validation errors, but actually every time
-the list is enumerated, the entity will be re-validated, which probably isn't what is expected.
+
+### EntityValidator
+
+This validator allows chaining of multiple validators together:
+
+```csharp
+var entityValidator = new EntityValidator<MyClass>()
+    .Validate(x => x.Item1, new RequiredValidator(), new StringLengthValidator(5))
+    .Validate(x => x.Item2, new RequiredValidator(), new StringLengthValidator(3));
+```
