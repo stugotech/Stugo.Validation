@@ -2,7 +2,7 @@
 
 namespace Stugo.Validation
 {
-    public interface IValidator<T>
+    public interface IValidator<in T>
     {
         ValidationError[] GetErrors(T entity, string prefix = null);
     }
