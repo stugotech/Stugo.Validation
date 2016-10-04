@@ -8,11 +8,5 @@
             : base(field, Key)
         {
         }
-
-
-        public RequiredValidationError()
-            : this("value")
-        {
-        }
     }
 }

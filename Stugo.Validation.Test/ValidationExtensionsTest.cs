@@ -9,7 +9,7 @@ namespace Stugo.Validation.Test
         public void IsValid_returns_true_if_there_are_no_errors()
         {
             var validatorMock = new Mock<IValidator<object>>();
-            validatorMock.Setup(x => x.GetErrors(It.IsAny<object>()))
+            validatorMock.Setup(x => x.GetErrors(It.IsAny<object>(), It.IsAny<string>()))
                 .Returns(new ValidationError[0]);
 
             var result = ValidationExtensions.IsValid(validatorMock.Object, null);
@@ -22,7 +22,7 @@ namespace Stugo.Validation.Test
         public void IsValid_returns_false_if_there_is_one_error()
         {
             var validatorMock = new Mock<IValidator<object>>();
-            validatorMock.Setup(x => x.GetErrors(It.IsAny<object>()))
+            validatorMock.Setup(x => x.GetErrors(It.IsAny<object>(), It.IsAny<string>()))
                 .Returns(new ValidationError[] {
                     new ValidationError("one", "one")
                 });

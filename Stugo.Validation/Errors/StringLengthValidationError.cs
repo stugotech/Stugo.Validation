@@ -12,12 +12,6 @@
         }
 
 
-        public StringLengthValidationError(int maxLength)
-            : this("value", maxLength)
-        {
-        }
-
-
         public int MaxLength { get; private set; }
     }
 }
