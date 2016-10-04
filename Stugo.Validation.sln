@@ -7,9 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stugo.Validation", "Stugo.V
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9FEBB5FB-3298-41BB-A4CF-8EB3A55C847A}"
 	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
 		build.cmd = build.cmd
 		GitVersion.targets = GitVersion.targets
 		publish.cmd = publish.cmd
+		release.cmd = release.cmd
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stugo.Validation.Test", "Stugo.Validation.Test\Stugo.Validation.Test.csproj", "{9414C215-CBF8-435F-8F0A-5FDB52FD8A55}"
